@@ -6,6 +6,7 @@ import TextInput from '../../components/TextInput';
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +19,8 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = () => {
     console.log('Logging in with username:', username, 'and password:', password);
+    setIsLoggedIn(true);
+
   };
 
   return (
@@ -43,6 +46,8 @@ const LoginPage: React.FC = () => {
         <button className="login-button" onClick={handleLogin}>
           Login
         </button>
+
+        {isLoggedIn && <p>You logged in as {username}</p>}
       </div>
     </div>
   );
